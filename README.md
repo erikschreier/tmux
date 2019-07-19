@@ -38,3 +38,6 @@ The last Step is to set your default Shell, if you want to use something other t
     11 ..
 
 If you want to use bash instead you just can comment out the line.
+
+### WARNING: New Mapping
+In general there are only a few aditions of keys (see ~/.tmux/.tmux.conf.keymaps) but there two changes where experienced users could struggle, see line 12 to 17 and 19 to 27.
