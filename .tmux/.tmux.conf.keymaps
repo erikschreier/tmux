@@ -1,0 +1,62 @@
+# vim: ts=4 sts=4 sw=4 tw=79 cc=+1 et ai ff=unix
+#==============================================================================
+# Author:  Erik Schreier - erik-schreier@gmx.de
+# Source:  https://github.com/erikschreier/tmux
+# Version: 1.0 (Jun. 12 2019)
+# File:    ~/.tmux/.tmux.conf.keymaps
+#==============================================================================
+# bind:   <CTRL> + <SPACE>, <r>        ->> reload config
+#------------------------------------------------------------------------------
+bind r source-file ~/.tmux.conf 
+#------------------------------------------------------------------------------
+# unbind: <CTRL> + <b>
+# bind:   <CTRL> + <SPACE>             ->> as Prefix
+#------------------------------------------------------------------------------
+unbind C-b
+set-option -g prefix C-Space
+bind-key C-Space send-prefix
+#------------------------------------------------------------------------------
+# unbind: <CTRL> + <SPACE>, <">
+# unbind: <CTRL> + <SPACE>, <%>
+# bind:   <CTRL> + <SPACE>, <v>        ->> split vertical   (new split in cwd)
+# bind:   <CTRL> + <SPACE>, <h>        ->> split horizontal (new split in cwd)
+#------------------------------------------------------------------------------
+unbind '"'
+unbind %
+bind h split-window -h -c "#{pane_current_path}"
+bind v split-window -v -c "#{pane_current_path}"
+#------------------------------------------------------------------------------
+# bind:   <META> + <h>                 ->> move one pane left
+# bind:   <META> + <j>                 ->> move one pane down
+# bind:   <META> + <k>                 ->> move one pane up
+# bind:   <META> + <l>                 ->> move one pane right
+#------------------------------------------------------------------------------
+bind -n M-h select-pane -L
+bind -n M-j select-pane -D
+bind -n M-k select-pane -U
+bind -n M-l select-pane -R
+#------------------------------------------------------------------------------
+# bind:   <META> + <LEFT>              ->> resize pane left
+# bind:   <META> + <DOWN>              ->> resize pane down
+# bind:   <META> + <UP>                ->> resize pane up
+# bind:   <META> + <RIGHT>             ->> resize pane right
+#------------------------------------------------------------------------------
+bind -n M-Left  resize-pane -L 5
+bind -n M-Down  resize-pane -D 5
+bind -n M-Up    resize-pane -U 5
+bind -n M-Right resize-pane -R 5
+#------------------------------------------------------------------------------
+# bind:   <META> + 1                   ->> switch to window 1
+# ...
+# bind:   <META> + 9                   ->> switch to window 9
+#------------------------------------------------------------------------------
+bind -n M-1 select-window -t 1
+bind -n M-2 select-window -t 2
+bind -n M-3 select-window -t 3
+bind -n M-4 select-window -t 4
+bind -n M-5 select-window -t 5
+bind -n M-6 select-window -t 6
+bind -n M-7 select-window -t 7
+bind -n M-8 select-window -t 8
+bind -n M-9 select-window -t 9
+#==============================================================================

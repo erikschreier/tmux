@@ -1,0 +1,71 @@
+# vim: ts=4 sts=4 sw=4 tw=79 cc=+1 et ai ff=unix
+#==============================================================================
+# Author:  Erik Schreier - erik-schreier@gmx.de
+# Source:  https://github.com/erikschreier/tmux
+# Version: 1.0 (Jun 12 2019)
+# Path:    ~/.tmux/.tmux.conf.surface
+#==============================================================================
+# Markers: FG-BLACK, BG-COLOR, bold text
+#------------------------------------------------------------------------------
+MkRd="#[fg=colour000,bg=colour001,bold]"
+MkGn="#[fg=colour000,bg=colour002,bold]"
+MkYe="#[fg=colour000,bg=colour003,bold]"
+MkBl="#[fg=colour000,bg=colour004,bold]"
+MkPu="#[fg=colour000,bg=colour005,bold]"
+MkAq="#[fg=colour000,bg=colour006,bold]"
+#------------------------------------------------------------------------------
+# Labels: FG-COLOR, BG-BLACK
+#------------------------------------------------------------------------------
+LbRd="#[fg=colour001,bg=colour008,nobold]"
+LbGn="#[fg=colour002,bg=colour008,nobold]"
+LbYe="#[fg=colour003,bg=colour008,nobold]"
+LbBl="#[fg=colour004,bg=colour008,nobold]"
+LbPu="#[fg=colour005,bg=colour008,nobold]"
+LbAq="#[fg=colour006,bg=colour008,nobold]"
+#------------------------------------------------------------------------------
+# Left part of statusbar
+#------------------------------------------------------------------------------
+StLt="$MkAq #S #[bg=default] "                        # session name
+WnSC="$MkGn #I $LbGn #W#F "                           # active window
+WnSt="$MkRd #I $LbRd #W#F "                           # inactive windows
+#------------------------------------------------------------------------------
+# right part of statusbar
+#------------------------------------------------------------------------------
+DtTm="$LbYe %a %-d. %B %Y $MkYe %H:%M #[bg=default] " # full date | time
+HsWh="$LbPu #h $MkPu #(whoami) "                      # hostname | username
+StRt="$DtTm$HsWh"                                     # build right side
+#------------------------------------------------------------------------------
+# Splitlines
+#------------------------------------------------------------------------------
+set -g pane-active-border-bg default                  # active split BG
+set -g pane-border-bg default                         # inactive split BG
+set -g pane-active-border-fg colour007                # active split FG
+set -g pane-border-fg colour008                       # inacive split FG
+#------------------------------------------------------------------------------
+# Messagebar colors
+#------------------------------------------------------------------------------
+set -g message-bg colour008
+set -g message-fg colour001
+#------------------------------------------------------------------------------
+# Statusbar colors
+#------------------------------------------------------------------------------
+set -g status-bg colour000
+set -g status-fg colour000
+#------------------------------------------------------------------------------
+# Statusbar options
+#------------------------------------------------------------------------------
+set -g status-justify left
+setw -g status-left-length 10
+set -g status-right-length 100
+setw -g window-status-separator " "
+#------------------------------------------------------------------------------
+# Print the left side
+#------------------------------------------------------------------------------
+setw -g status-left $StLt
+setw -g window-status-current-format $WnSC
+setw -g window-status-format $WnSt
+#------------------------------------------------------------------------------
+# Print the right side
+#------------------------------------------------------------------------------
+set -g status-right $StRt
+#==============================================================================
